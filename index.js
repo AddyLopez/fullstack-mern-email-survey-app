@@ -6,6 +6,7 @@ const keys = require("./config/keys");
 const PORT = process.env.PORT || 5001;
 const app = express();
 
+// Authenticate users with Google
 passport.use(
   new GoogleStrategy(
     {
@@ -17,7 +18,15 @@ passport.use(
       console.log(accessToken);
     }
   )
-); // Authenticate users with Google
+);
+
+// Whenever a user visits this endpoint, attempt to authenticate that user
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
+);
 
 app.listen(PORT, () => {
   console.log(`Listening on Port ${PORT}`);
