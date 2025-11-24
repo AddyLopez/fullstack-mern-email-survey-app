@@ -4,4 +4,4 @@
 
 ## Description
 
-A fullstack application build with NodeJS, Express, React, Redux, and MongoDB. User login implemented with a Google OAuth authentication flow.
+A fullstack application build with NodeJS, Express, React, Redux, and MongoDB. User login implemented with a Google OAuth authentication flow, facilitated by Passport JS.
