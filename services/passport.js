@@ -1,3 +1,7 @@
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const keys = require("../config/keys");
+
 // Authenticate users with Google Strategy. Function in second argument is where app can get user details, create new record in database, etc.
 passport.use(
   new GoogleStrategy(
