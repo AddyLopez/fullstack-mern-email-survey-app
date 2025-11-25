@@ -6,5 +6,5 @@ const userSchema = new Schema({
   googleId: String,
 });
 
-// Create users Model Class with the userSchema using Mongoose
+// (If "users" collection not already created then) Create users Model Class with the userSchema using Mongoose
 mongoose.model("users", userSchema);
