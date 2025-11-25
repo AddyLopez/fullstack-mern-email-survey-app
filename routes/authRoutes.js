@@ -11,4 +11,13 @@ module.exports = (app) => {
 
   // In this case, Passport will see the code property sent from Google. Exchange code for user's profile.
   app.get("/auth/google/callback", passport.authenticate("google"));
+
+  app.get("/api/logout", (req, res) => {
+    req.logout(); // Strips user ID from cookie to log out user
+    res.send(req.user); // To prove that user is no longer logged in
+  });
+
+  app.get("/api/current_user", (req, res) => {
+    res.send(req.user);
+  });
 };
