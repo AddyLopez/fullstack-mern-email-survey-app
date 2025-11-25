@@ -19,6 +19,10 @@ app.use(
   })
 );
 
+// Tell app to make use of cookies for authentication
+app.use(passport.initialize());
+app.use(passport.session());
+
 require("./routes/authRoutes")(app); // Require in this module and call its function with app as its argument
 
 app.listen(PORT, () => {
