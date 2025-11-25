@@ -22,7 +22,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback",
+      callbackURL: keys.googleRedirectURI,
     },
     (accessToken, refreshToken, profile, done) => {
       // (Async query returns a Promise.) Attempt to find one user where googleId is equal to profile.id.
