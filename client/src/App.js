@@ -8,6 +8,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h2>Troggy</h2>
       </header>
+      <a href="/auth/google">Sign in with Google</a>
     </div>
   );
 }
