@@ -24,19 +24,19 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: keys.googleRedirectURI,
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // (Async query returns a Promise.) Attempt to find one user where googleId is equal to profile.id.
-      User.findOne({ googleId: profile.id }).then((existingUser) => {
-        if (existingUser) {
-          // We already have a record with given profile's ID, skip user creation
-          done(null, existingUser); // First argument: no error; second argument: send along existingUser
-        } else {
-          // Create new Model Instance of a User (one discrete record) and save it (otherwise it won't persist in the database), then take new user successfully saved in db and call done function.
-          new User({ googleId: profile.id })
-            .save()
-            .then((user) => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+
+      if (existingUser) {
+        // We already have a record with given profile's ID, skip user creation
+        done(null, existingUser); // First argument: no error; second argument: send along existingUser
+      } else {
+        // Create new Model Instance of a User (one discrete record) and save it (otherwise it won't persist in the database), then take new user successfully saved in db and call done function.
+        const user = await new User({ googleId: profile.id }).save();
+
+        done(null, user);
+      }
     }
   )
 );
