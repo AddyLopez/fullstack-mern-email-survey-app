@@ -6,22 +6,10 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-
-// dummy components
-const Root = () => (
-  <div>
-    <h2>Header</h2>
-    <Outlet />
-  </div>
-);
-const Dashboard = () => (
-  <div>
-    <h2>Dashboard</h2>
-    <Outlet />
-  </div>
-);
-const SurveyNew = () => <h2>SurveyNew</h2>;
-const Landing = () => <h2>Landing</h2>;
+import Root from "./Root";
+import Landing from "./Landing";
+import Dashboard from "./Dashboard";
+import SurveyNew from "./SurveyNew";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
