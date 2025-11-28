@@ -2,7 +2,6 @@ import React from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Outlet,
   Route,
   RouterProvider,
 } from "react-router-dom";
