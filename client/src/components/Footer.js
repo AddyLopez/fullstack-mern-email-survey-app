@@ -8,6 +8,7 @@ const Footer = () => {
         href="https://github.com/AddyLopez/fullstack-mern-email-survey-app"
         target="_blank"
         title="To GitHub repository"
+        rel="noreferrer"
       >
         Open-source code
       </a>{" "}
