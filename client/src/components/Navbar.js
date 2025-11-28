@@ -4,9 +4,10 @@ import { NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav>
+      <a href="/">Inquire</a>
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Login with Google</NavLink>
         </li>
       </ul>
     </nav>
