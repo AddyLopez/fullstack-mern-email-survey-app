@@ -7,7 +7,7 @@ const NavBar = () => {
       <a href="/">Inquire</a>
       <ul>
         <li>
-          <NavLink to="/">Login with Google</NavLink>
+          <NavLink to="/auth/google">Login with Google</NavLink>
         </li>
       </ul>
     </nav>
