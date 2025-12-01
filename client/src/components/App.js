@@ -1,4 +1,4 @@
-import { Component, React, useEffect } from "react";
+import { Component, React /*useEffect*/ } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
