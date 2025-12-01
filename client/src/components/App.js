@@ -1,10 +1,12 @@
-import React from "react";
+import { Component, React, useEffect } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 import Root from "./Root";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
@@ -21,8 +23,23 @@ const router = createBrowserRouter(
   )
 );
 
-const App = () => {
-  return <RouterProvider router={router} />;
-};
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
 
-export default App;
+  render() {
+    return <RouterProvider router={router} />;
+  }
+}
+
+/*
+const App = (props) => {
+  useEffect(() => {
+    props.fetchUser();
+  }, []);
+
+  return <RouterProvider router={router} />;
+};*/
+
+export default connect(null, actions)(App);
