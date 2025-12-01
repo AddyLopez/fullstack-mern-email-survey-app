@@ -1,9 +1,12 @@
+import { FETCH_USER } from "../actions/types";
 // The purpose of monitoring this slice of state is to conditionally render UI components or content based on whether a user is logged in or not.
 
 // State initially starts off as undefined, so it's set here as null instead
 const authenticationReducer = (state = null, action) => {
   console.log(action);
   switch (action.type) {
+    case FETCH_USER:
+      return action.payload || false; // return the User Model or (if an empty string, i.e. falsy then) false
     default:
       return state;
   }
