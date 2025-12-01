@@ -1,8 +1,8 @@
 import axios from "axios";
 import { FETCH_USER } from "./types";
 
-// Redux action creator. It dispatches the action after API responds.
-const fetchUser = () => {
+// Redux action creator. It uses redux thunk. It dispatches the action after API responds.
+export const fetchUser = () => {
   return function (dispatch) {
     // Make request to backend API
     axios
