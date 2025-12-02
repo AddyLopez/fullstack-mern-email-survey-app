@@ -3,6 +3,17 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
 class NavBar extends Component {
+  renderContent() {
+    switch (this.props.authentication) {
+      case null:
+        return "Still deciding...";
+      case false:
+        return "Logged out.";
+      default:
+        return "Logged in.";
+    }
+  }
+
   render() {
     // console.log(this.props);
     return (
@@ -12,6 +23,7 @@ class NavBar extends Component {
           <li>
             <NavLink to="/auth/google">Login with Google</NavLink>
           </li>
+          <li>{this.renderContent()}</li>
         </ul>
       </nav>
     );
