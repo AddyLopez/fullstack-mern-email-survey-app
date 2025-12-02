@@ -20,7 +20,7 @@ module.exports = (app) => {
 
   app.get("/api/logout", (req, res) => {
     req.logout(); // Strips user ID from cookie to log out user
-    res.send(req.user); // To prove that user is no longer logged in
+    res.redirect("/");
   });
 
   app.get("/api/current_user", (req, res) => {
