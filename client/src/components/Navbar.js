@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 const NavBar = () => {
   return (
@@ -14,4 +15,8 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+function mapStateToProps(state) {
+  return { authentication: state.authentication };
+}
+
+export default connect()(NavBar);
