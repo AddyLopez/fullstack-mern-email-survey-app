@@ -27,7 +27,9 @@ class NavBar extends Component {
     // console.log(this.props);
     return (
       <nav>
-        <NavLink to="/">Inquire</NavLink>
+        <NavLink to={this.props.authentication ? "/surveys" : "/"}>
+          Inquire
+        </NavLink>
         <ul>{this.renderContent()}</ul>
       </nav>
     );
