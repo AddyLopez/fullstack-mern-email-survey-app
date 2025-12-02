@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class NavBar extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <nav>
         <a href="/">Inquire</a>
