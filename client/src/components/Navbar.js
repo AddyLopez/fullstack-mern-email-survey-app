@@ -15,8 +15,8 @@ const NavBar = () => {
   );
 };
 
-function mapStateToProps(state) {
-  return { authentication: state.authentication };
+function mapStateToProps({ authentication }) {
+  return { authentication: authentication };
 }
 
 export default connect()(NavBar);
