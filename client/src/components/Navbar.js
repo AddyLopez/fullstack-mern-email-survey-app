@@ -17,7 +17,7 @@ class NavBar extends Component {
         // placeholder for now
         return (
           <li>
-            <a>Log out</a>
+            <a href="/api/logout">Log out</a>
           </li>
         );
     }
