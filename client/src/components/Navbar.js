@@ -6,11 +6,20 @@ class NavBar extends Component {
   renderContent() {
     switch (this.props.authentication) {
       case null:
-        return "Still deciding...";
+        return;
       case false:
-        return "Logged out.";
+        return (
+          <li>
+            <NavLink to="/auth/google">Login with Google</NavLink>
+          </li>
+        );
       default:
-        return "Logged in.";
+        // placeholder for now
+        return (
+          <li>
+            <a>Log out</a>
+          </li>
+        );
     }
   }
 
@@ -20,9 +29,6 @@ class NavBar extends Component {
       <nav>
         <a href="/">Inquire</a>
         <ul>
-          <li>
-            <NavLink to="/auth/google">Login with Google</NavLink>
-          </li>
           <li>{this.renderContent()}</li>
         </ul>
       </nav>
