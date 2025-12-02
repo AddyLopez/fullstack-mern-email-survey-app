@@ -5,6 +5,7 @@ const Landing = () => {
     <main>
       <h1>Welcome to Inquire</h1>
       <h2>An email survey application</h2>
+      <h3>Collect feedback from your users</h3>
     </main>
   );
 };
