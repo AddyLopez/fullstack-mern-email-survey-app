@@ -10,7 +10,7 @@ class NavBar extends Component {
       case false:
         return (
           <li>
-            <NavLink to="/auth/google">Login with Google</NavLink>
+            <a href="/auth/google">Login with Google</a>
           </li>
         );
       default:
@@ -27,10 +27,8 @@ class NavBar extends Component {
     // console.log(this.props);
     return (
       <nav>
-        <a href="/">Inquire</a>
-        <ul>
-          <li>{this.renderContent()}</li>
-        </ul>
+        <NavLink to="/">Inquire</NavLink>
+        <ul>{this.renderContent()}</ul>
       </nav>
     );
   }
