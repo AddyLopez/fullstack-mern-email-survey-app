@@ -9,3 +9,13 @@ export const fetchUser = () => {
     dispatch({ type: FETCH_USER, payload: response.data });
   };
 };
+
+export const handleToken = (token) => {
+  return async (dispatch) => {
+    // Post token from Stripe API
+    const response = await axios.post("/api/stripe", token);
+
+    // Backend server sends user model with updated number of credits
+    dispatch({ type: FETCH_USER, payload: response.data });
+  };
+};
