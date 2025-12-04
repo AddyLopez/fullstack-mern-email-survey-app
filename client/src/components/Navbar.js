@@ -17,10 +17,10 @@ class NavBar extends Component {
       default:
         // placeholder for now
         return [
-          <li>
+          <li key="1">
             <Payments />
           </li>,
-          <li>
+          <li key="2">
             <a href="/api/logout">Log out</a>
           </li>,
         ];
