@@ -1,6 +1,7 @@
 import { React, Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import Payments from "./Payments";
 
 class NavBar extends Component {
   renderContent() {
@@ -15,11 +16,14 @@ class NavBar extends Component {
         );
       default:
         // placeholder for now
-        return (
+        return [
+          <li>
+            <Payments />
+          </li>,
           <li>
             <a href="/api/logout">Log out</a>
-          </li>
-        );
+          </li>,
+        ];
     }
   }
 
