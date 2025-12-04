@@ -4,4 +4,6 @@ module.exports = {
   googleRedirectURI: process.env.GOOGLE_REDIRECT_URI,
   mongoURI: process.env.MONGO_URI,
   cookieKey: process.env.COOKIE_KEY,
+  stripePublishableKey: process.env.STIPE_PUBLISHABLE_KEY,
+  stripeSecretKey: process.env.STRIPE_SECRET_KEY,
 };
