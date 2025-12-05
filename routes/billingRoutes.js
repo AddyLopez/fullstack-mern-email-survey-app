@@ -4,6 +4,10 @@ const stripe = require("stripe")(keys.stripeSecretKey);
 module.exports = (app) => {
   app.post("/api/stripe", async (req, res) => {
     // Handle token, reach out to Stripe API, finalize charge, update user's credits
+
+    if (!req.user) {
+      return res.status(401).send({ error: "Please log in." }); // 401 Forbidden
+    }
     // console.log(req.body);
     const charge = await stripe.charges.create({
       amount: 500,
