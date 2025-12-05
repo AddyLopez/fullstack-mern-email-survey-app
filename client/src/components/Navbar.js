@@ -20,7 +20,8 @@ class NavBar extends Component {
           <li key="1">
             <Payments />
           </li>,
-          <li key="2">
+          <li key="2"> Credits: {this.props.authentication.credits}</li>,
+          <li key="3">
             <a href="/api/logout">Log out</a>
           </li>,
         ];
