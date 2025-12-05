@@ -11,6 +11,8 @@ mongoose.connect(keys.mongoURI); // Use Mongoose to connect with MongoDB instanc
 const PORT = process.env.PORT || 5001;
 const app = express();
 
+app.use(express.json()); // Middleware parses req.body
+
 // Cookie automatically expires after 30 days. Keys property encrypts the cookie.
 app.use(
   cookieSession({
