@@ -12,6 +12,11 @@ module.exports = (app) => {
       source: req.body.id,
     });
 
-    console.log(charge);
+    // console.log(charge);
+
+    req.user.credits += 5; // Add credits to current user model
+    const user = await req.user.save(); // Save user to persist changes. user variable represents most up-to-date user model copied from database (returned from save function).
+
+    res.send(user); // Send updated user model in response
   });
 };
