@@ -24,6 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes")(app); // Require in this module and call its function with app as its argument
+require("./routes/billingRoutes.js")(app); // More function currying as above
 
 app.listen(PORT, () => {
   console.log(`Listening on Port ${PORT}`);
