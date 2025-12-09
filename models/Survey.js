@@ -7,6 +7,8 @@ const surveySchema = new Schema({
   body: String,
   subject: String,
   recipients: [String],
+  yes: { type: Number, default: 0 },
+  no: { type: Number, default: 0 },
 });
 
 // If "surveys" collection not already created then create surveys Model Class with the surveySchema using Mongoose
