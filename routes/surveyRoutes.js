@@ -15,6 +15,7 @@ module.exports = (app) => {
       recipients: recipients.split(",").map((email) => {
         ({ email });
       }),
+      _user: req.user.id, // ID automatically available on any Mongoose model
     });
   });
 };
