@@ -27,7 +27,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes")(app); // Require in this module and call its function with app as its argument
-require("./routes/billingRoutes.js")(app); // More function currying as above
+require("./routes/billingRoutes")(app); // More function currying as above
+require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up specific static production assets (e.g. main.js or main.css)
