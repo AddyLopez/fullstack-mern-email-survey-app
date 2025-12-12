@@ -1,9 +1,17 @@
+const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 const requireCredits = require("../middlewares/requireCredits");
 
+const Survey = mongoose.model("Survey");
+
 module.exports = (app) => {
   app.post("/api/surveys", requireLogin, requireCredits, (req, res) => {
-    // Is user logged in?
-    // Do they have enough credits?
+    const { title, subject, body, recipients } = req.body;
+
+    const survey = new Survey({
+      title,
+      subject,
+      body,
+    });
   });
 };
