@@ -8,4 +8,4 @@ const userSchema = new Schema({
 });
 
 // (If "users" collection not already created then) Create users Model Class with the userSchema using Mongoose
-mongoose.model("users", userSchema);
+mongoose.model("User", userSchema);
