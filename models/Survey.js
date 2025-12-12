@@ -16,4 +16,4 @@ const surveySchema = new Schema({
 });
 
 // If "surveys" collection not already created then create surveys Model Class with the surveySchema using Mongoose
-mongoose.model("surveys", surveySchema);
+mongoose.model("Survey", surveySchema);
