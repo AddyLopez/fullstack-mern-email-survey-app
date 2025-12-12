@@ -13,7 +13,7 @@ module.exports = (app) => {
       subject,
       body,
       recipients: recipients.split(",").map((email) => {
-        return { email: email };
+        ({ email });
       }),
     });
   });
