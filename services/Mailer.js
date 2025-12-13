@@ -1,5 +1,5 @@
 const sendGrid = require("sendgrid");
-const helper = sendGrid.mail; // Mail class from sendgrid library
+const helper = sendGrid.mail; // Mail class from SendGrid library
 const keys = require("../config/keys");
 
 class Mailer extends helper.Mail {
@@ -11,14 +11,24 @@ class Mailer extends helper.Mail {
     this.body = new helper.Content("text/html", content);
     this.recipients = this.formatAddresses(recipients);
 
-    this.addContent(this.body); // Built-in functionality from sendGrid's helper.Mail base class
+    this.addContent(this.body); // Built-in functionality from SendGrid's helper.Mail base class
+    this.addClickTracking(); // To have SendGrid keep track of which recipient clicked a link in the email
   }
 
   formatAddresses(recipients) {
     const emails = recipients.map(({ email }) => {
-      return new helper.Email(email); // Format each recipient's email with sendGrid's helper function
+      return new helper.Email(email); // Format each recipient's email with SendGrid's helper function
     });
     return emails;
+  }
+
+  addClickTracking() {
+    // SendGrid boilerplate (not well-documented)
+    const trackingSettings = new helper.TrackingSettings();
+    const clickTracking = new helper.ClickTracking(true, true);
+
+    trackingSettings.setClickTracking(clickTracking);
+    this.addTrackingSettings(trackingSettings);
   }
 }
 
