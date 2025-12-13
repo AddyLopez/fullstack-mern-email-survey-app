@@ -10,6 +10,8 @@ class Mailer extends helper.Mail {
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
     this.recipients = this.formatAddresses(recipients);
+
+    this.addContent(this.body); // Built-in functionality from sendGrid's helper.Mail base class
   }
 
   formatAddresses(recipients) {
