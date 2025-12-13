@@ -6,7 +6,7 @@ class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
     super();
 
-    this.sgApi = sendgrid(keys.sendGridKey); // Pass in API key to communicate with sendGrid API
+    this.sgAPI = sendgrid(keys.sendGridKey); // Pass in API key to communicate with sendGrid API
     this.from_email = new helper.Email(keys.sendGridFromEmail);
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
@@ -41,6 +41,18 @@ class Mailer extends helper.Mail {
     });
     // Add completed personalization object
     this.addPersonalization(personalize); // Built-in functionality from SendGrid's helper.Mail base class
+  }
+
+  async send() {
+    // toJSON and API methods are defined by base class
+    const request = this.sgAPI.emptyRequest({
+      method: "POST",
+      path: "/v3/mail/send",
+      body: this.toJSON(),
+    });
+
+    const response = await this.sgAPI.API(request);
+    return response;
   }
 }
 
