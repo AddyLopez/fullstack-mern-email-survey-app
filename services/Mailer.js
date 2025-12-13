@@ -11,6 +11,13 @@ class Mailer extends helper.Mail {
     this.body = new helper.Content("text/html", content);
     this.recipients = this.formatAddresses(recipients);
   }
+
+  formatAddresses(recipients) {
+    const emails = recipients.map(({ email }) => {
+      return new helper.Email(email); // Format each recipient's email with sendGrid's helper function
+    });
+    return emails;
+  }
 }
 
 module.exports = Mailer;
