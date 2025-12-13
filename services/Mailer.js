@@ -13,6 +13,7 @@ class Mailer extends helper.Mail {
 
     this.addContent(this.body); // Built-in functionality from SendGrid's helper.Mail base class
     this.addClickTracking(); // To have SendGrid keep track of which recipient clicked a link in the email
+    this.addRecipients(); // Add recipients to the mailer
   }
 
   formatAddresses(recipients) {
@@ -29,6 +30,16 @@ class Mailer extends helper.Mail {
 
     trackingSettings.setClickTracking(clickTracking);
     this.addTrackingSettings(trackingSettings);
+  }
+
+  addRecipients() {
+    const personalize = new helper.Personalization();
+    // Add each recipient to the personalize object
+    this.recipients.forEach((recipient) => {
+      personalize.addTo(recipient);
+    });
+    // Add completed personalization object
+    this.addPersonalization(personalize); // Built-in functionality from SendGrid's helper.Mail base class
   }
 }
 
