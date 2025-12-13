@@ -6,6 +6,7 @@ class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
     super();
 
+    this.sgApi = sendgrid(keys.sendGridKey); // Pass in API key to communicate with sendGrid API
     this.from_email = new helper.Email(keys.sendGridFromEmail);
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
