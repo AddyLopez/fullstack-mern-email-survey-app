@@ -18,10 +18,9 @@ class Mailer extends helper.Mail {
   }
 
   formatAddresses(recipients) {
-    const emails = recipients.map(({ email }) => {
+    return recipients.map(({ email }) => {
       return new helper.Email(email); // Format each recipient's email with SendGrid's helper function
     });
-    return emails;
   }
 
   addClickTracking() {
