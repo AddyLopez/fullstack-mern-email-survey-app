@@ -18,9 +18,8 @@ class Mailer extends helper.Mail {
   }
 
   formatAddresses(recipients) {
-    console.log(recipients);
-    return recipients.map((recipient) => {
-      return new helper.Email(recipient); // Format each recipient's email with SendGrid's helper function
+    return recipients.map(({ email }) => {
+      return new helper.Email(email); // Format each recipient's email with SendGrid's helper function
     });
   }
 
@@ -44,15 +43,20 @@ class Mailer extends helper.Mail {
   }
 
   async send() {
-    // toJSON and API methods are defined by base class
-    const request = this.sgAPI.emptyRequest({
-      method: "POST",
-      path: "/v3/mail/send",
-      body: this.toJSON(),
-    });
+    try {
+      // toJSON and API methods are defined by base class
+      const request = this.sgAPI.emptyRequest({
+        method: "POST",
+        path: "/v3/mail/send",
+        body: this.toJSON(),
+      });
 
-    const response = await this.sgAPI.API(request);
-    return response;
+      const response = await this.sgAPI.API(request);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log("error", error.message);
+    }
   }
 }
 
