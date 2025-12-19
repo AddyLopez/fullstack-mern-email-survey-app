@@ -22,10 +22,9 @@ module.exports = (app) => {
       dateSent: Date.now(),
     });
 
-    // Attempt to create and send email
+    // Create and send email, then save survey
     const mailer = new Mailer(survey, surveyTemplate(survey)); // 1st arg passes survey object to extract subject and recipients properties. 2nd arg is HTML content to use in body of email.
     await mailer.send();
-    // Email sent successfully? Yes!
-    // Save survey!
+    await survey.save();
   });
 };
