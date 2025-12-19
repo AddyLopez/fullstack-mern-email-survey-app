@@ -23,7 +23,7 @@ module.exports = (survey) => {
             background-color: #17738f;
             border: 1px solid #17738f;
             border-radius: 10px;
-            color: white;
+            color: white !important;
             font-weight: bold;
             letter-spacing: 1px;
             margin: 0px 15px;
