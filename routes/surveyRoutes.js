@@ -7,7 +7,7 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = mongoose.model("Survey");
 
 module.exports = (app) => {
-  app.post("/api/surveys", requireLogin, requireCredits, (req, res) => {
+  app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
     // Create new Survey instance
@@ -24,8 +24,8 @@ module.exports = (app) => {
 
     // Attempt to create and send email
     const mailer = new Mailer(survey, surveyTemplate(survey)); // 1st arg passes survey object to extract subject and recipients properties. 2nd arg is HTML content to use in body of email.
-    mailer.send();
-    // Email sent successfully?
+    await mailer.send();
+    // Email sent successfully? Yes!
     // Save survey!
   });
 };
