@@ -46,8 +46,8 @@ module.exports = (survey) => {
             <h2>Please answer the following question:</h2>
             <p>${survey.body}</p>
             <div>
-              <a href="${keys.redirectDomain}" title="Yes">Yes</a>
-              <a href="${keys.redirectDomain}" title="No">No</a>
+              <a href="${keys.redirectDomain}/api/surveys/thanks" title="Yes">Yes</a>
+              <a href="${keys.redirectDomain}/api/surveys/thanks" title="No">No</a>
             </div>
           </article>
         </div>
