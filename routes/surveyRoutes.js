@@ -24,13 +24,17 @@ module.exports = (app) => {
 
     // Create and send email, then save survey
     const mailer = new Mailer(survey, surveyTemplate(survey)); // 1st arg passes survey object to extract subject and recipients properties. 2nd arg is HTML content to use in body of email.
-    await mailer.send();
-    await survey.save();
+    try {
+      await mailer.send();
+      await survey.save();
 
-    // Deduct one credit for services
-    req.user.credits -= 1;
-    const user = await req.user.save(); // The constant user is the updated user model that is returned
+      // Deduct one credit for services
+      req.user.credits -= 1;
+      const user = await req.user.save(); // The constant user is the updated user model that is returned
 
-    res.send(user); // Will enable updated number of credits to appear on frontend
+      res.send(user); // Will enable updated number of credits to appear on frontend
+    } catch (err) {
+      res.status(422).send(err); // Unprocessable Entity status code
+    }
   });
 };
