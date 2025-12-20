@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./styles/Dashboard.css";
 
 const Dashboard = () => {
@@ -8,7 +8,7 @@ const Dashboard = () => {
       <h4>I am the Dashboard component!</h4>
       <Outlet />
       <div className="button-container">
-        <button>+</button>
+        <Link to="/surveys/new">+</Link>
       </div>
     </section>
   );
