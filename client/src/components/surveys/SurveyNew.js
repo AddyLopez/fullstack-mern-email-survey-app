@@ -5,7 +5,7 @@ import SurveyForm from "./SurveyForm";
 const SurveyNew = () => {
   return (
     <>
-      <p>I am the SurveyNew component!</p>;
+      <p>I am the SurveyNew component!</p>
       <SurveyForm />
     </>
   );
