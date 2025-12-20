@@ -10,7 +10,7 @@ import * as actions from "../actions";
 import Root from "./Root";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
-import SurveyNew from "./SurveyNew";
+import SurveyNew from "./surveys/SurveyNew";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
