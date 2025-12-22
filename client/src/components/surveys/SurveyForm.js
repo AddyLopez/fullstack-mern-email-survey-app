@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 import SurveyField from "./SurveyField";
+import validateRecipients from "../../utils/validateRecipients";
 
 const FIELDS = [
   {
@@ -71,6 +72,8 @@ function validate(values) {
       errors[name] = `You must provide a ${label.toLowerCase()}.`;
     }
   });
+
+  errors.recipients = validateRecipients(values.recipients || ""); // ValidateEmails returns recipients' invalid email addresses
 
   return errors;
 }
