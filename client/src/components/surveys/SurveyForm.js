@@ -48,9 +48,7 @@ class SurveyForm extends Component {
     return (
       <>
         <p>I am the SurveyForm component!</p>
-        <form
-          onSubmit={this.props.handleSubmit((values) => console.log(values))}
-        >
+        <form onSubmit={this.props.handleSubmit(() => this.props.toggle())}>
           {this.renderFields()}
           <Link to="/surveys">Cancel</Link>
           <button type="submit">Next</button>
