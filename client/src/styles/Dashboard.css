@@ -5,7 +5,7 @@
   width: 95%;
 }
 
-.Dashboard a {
+.Dashboard a.button-plus {
   background-color: teal;
   border: 1px solid teal;
   border-radius: 100%;
@@ -17,16 +17,16 @@
   text-decoration: none;
 }
 
-.Dashboard a:visited {
+.Dashboard a.button-plus:visited {
   color: #f5f5f5;
 }
 
-.Dashboard a:hover {
+.Dashboard a.button-plus:hover {
   background-color: #f5f5f5;
   color: teal;
   transition: all 200ms ease-in-out;
 }
 
-.Dashboard a:active {
+.Dashboard a.button-plus:active {
   transform: translate(1px, 1px);
 }
