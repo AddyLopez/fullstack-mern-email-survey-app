@@ -1,7 +1,11 @@
 import React from "react";
 
 const SurveyReview = () => {
-  return <h4>Please rconfirm that all the information is correct.</h4>;
+  return (
+    <section>
+      <h4>Please confirm that all the information is correct.</h4>
+    </section>
+  );
 };
 
 export default SurveyReview;
