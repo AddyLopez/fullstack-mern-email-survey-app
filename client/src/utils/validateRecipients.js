@@ -1,6 +1,6 @@
-// Source of regex: https://emailregex.com/#Javascript:~:text=zA%2DZ0%2D9%2D.%5D%2B%24)%22-,Javascript,-1
+// Source of regex: https://emailregex.com/#:~:text=)%24/-,HTML5,-1
 const regex =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 // Documentation on test method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test
 const validateRecipients = (recipients) => {
