@@ -62,9 +62,15 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  if (!values.surveyTitle) {
-    errors.surveyTitle = "You must provide a title.";
-  }
+  FIELDS.forEach(({ name, label }) => {
+    if (!values[name]) {
+      if (label === "Email Body") {
+        errors[name] = `You must provide an ${label.toLowerCase()}`;
+        return;
+      }
+      errors[name] = `You must provide a ${label.toLowerCase()}.`;
+    }
+  });
 
   return errors;
 }
