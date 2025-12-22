@@ -63,6 +63,8 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
+  errors.surveyRecipients = validateRecipients(values.surveyRecipients || ""); // validateEmails function returns recipients' invalid email addresses, if any
+
   FIELDS.forEach(({ name, label }) => {
     if (!values[name]) {
       if (label === "Email Body") {
@@ -72,8 +74,6 @@ function validate(values) {
       errors[name] = `You must provide a ${label.toLowerCase()}.`;
     }
   });
-
-  errors.recipients = validateRecipients(values.recipients || ""); // ValidateEmails returns recipients' invalid email addresses
 
   return errors;
 }
