@@ -26,12 +26,12 @@ class SurveyForm extends Component {
   renderFields() {
     return (
       <section>
-        {FIELDS.map((field, index) => {
+        {FIELDS.map(({ label, name }, index) => {
           return (
             <Field
               key={index}
-              label={field.label}
-              name={field.name}
+              label={label}
+              name={name}
               type="text"
               component={SurveyField}
             />
