@@ -11,7 +11,15 @@ const SurveyNew = () => {
     setVisibility(!visibility);
   };
 
-  return <>{visibility ? <SurveyFormReview /> : <SurveyForm />}</>;
+  return (
+    <>
+      {visibility ? (
+        <SurveyFormReview />
+      ) : (
+        <SurveyForm toggle={toggleVisibility} />
+      )}
+    </>
+  );
 };
 
 export default SurveyNew;
