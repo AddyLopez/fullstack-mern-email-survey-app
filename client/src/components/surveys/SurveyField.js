@@ -1,12 +1,13 @@
 import React from "react";
+import "../../styles/SurveyField.css";
 
 // SurveyField contains logic to render a single text label and input
-const SurveyField = ({ input, label, meta }) => {
+const SurveyField = ({ input, label, meta: { error, touched } }) => {
   return (
-    <div>
+    <div className="SurveyField">
       <label>{label}</label>
       <input {...input} />
-      {meta.error}
+      <div className="error">{touched && error}</div>
     </div>
   );
 };
