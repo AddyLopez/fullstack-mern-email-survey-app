@@ -8,7 +8,9 @@ const Dashboard = () => {
       <h4>I am the Dashboard component!</h4>
       <Outlet />
       <div className="button-container">
-        <Link to="/surveys/new">+</Link>
+        <Link to="/surveys/new" className="button-plus">
+          +
+        </Link>
       </div>
     </section>
   );
