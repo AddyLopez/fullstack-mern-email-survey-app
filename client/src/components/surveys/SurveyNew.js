@@ -14,7 +14,7 @@ const SurveyNew = () => {
   return (
     <>
       {visibility ? (
-        <SurveyFormReview />
+        <SurveyFormReview toggle={toggleVisibility} />
       ) : (
         <SurveyForm toggle={toggleVisibility} />
       )}
