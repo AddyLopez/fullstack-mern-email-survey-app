@@ -79,4 +79,5 @@ function validate(values) {
 export default reduxForm({
   validate: validate,
   form: "surveyForm",
+  destroyOnUnmount: false,
 })(SurveyForm);
