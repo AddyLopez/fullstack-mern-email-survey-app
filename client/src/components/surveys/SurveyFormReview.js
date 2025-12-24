@@ -11,9 +11,11 @@ const SurveyFormReview = ({ toggle }) => {
   );
 };
 
+// Extract form's values from state object to display on review screen
 const mapStateToProps = (state) => {
-  console.log(state);
-  return {};
+  return {
+    formValues: state.form.surveyForm.values,
+  };
 };
 
 export default connect(mapStateToProps)(SurveyFormReview);
