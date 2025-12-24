@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 // SurveyFormReview shows users their form inputs for review
 const SurveyFormReview = ({ toggle }) => {
@@ -10,4 +11,9 @@ const SurveyFormReview = ({ toggle }) => {
   );
 };
 
-export default SurveyFormReview;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {};
+};
+
+export default connect(mapStateToProps)(SurveyFormReview);
