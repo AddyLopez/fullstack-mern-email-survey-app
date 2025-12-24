@@ -2,16 +2,22 @@ import React from "react";
 import { connect } from "react-redux";
 
 // SurveyFormReview shows users their form inputs for review
-const SurveyFormReview = ({ toggle }) => {
+const SurveyFormReview = ({ toggle, formValues }) => {
   return (
     <section>
       <h4>Please confirm that all the information is correct.</h4>
+      <section>
+        <div>
+          <label>Survey Title</label>
+          <p>{formValues.surveyTitle}</p>
+        </div>
+      </section>
       <button onClick={toggle}>Back</button>
     </section>
   );
 };
 
-// Extract form's values from state object to display on review screen
+// Extract form's values from state object to pass as props for display on review screen
 const mapStateToProps = (state) => {
   return {
     formValues: state.form.surveyForm.values,
