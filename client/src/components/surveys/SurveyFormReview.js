@@ -20,6 +20,7 @@ const SurveyFormReview = ({ toggle, formValues }) => {
       <h4>Please confirm that all the information is correct.</h4>
       {reviewFormFields}
       <button onClick={toggle}>Back</button>
+      <button>Send Survey</button>
     </section>
   );
 };
