@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import formFields from "./formFields";
+import * as actions from "../../actions/index"; // import all action creators
 
 // SurveyFormReview shows users their form inputs for review
-const SurveyFormReview = ({ toggle, formValues }) => {
+const SurveyFormReview = ({ toggle, formValues, submitSurvey }) => {
   const reviewFormFields = formFields.map((formField) => {
     return (
       <section key={formField.name}>
@@ -20,7 +21,7 @@ const SurveyFormReview = ({ toggle, formValues }) => {
       <h4>Please confirm that all the information is correct.</h4>
       {reviewFormFields}
       <button onClick={toggle}>Back</button>
-      <button>Send Survey</button>
+      <button onClick={() => submitSurvey(formValues)}>Send Survey</button>
     </section>
   );
 };
@@ -32,4 +33,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(SurveyFormReview);
+export default connect(mapStateToProps, actions)(SurveyFormReview);
