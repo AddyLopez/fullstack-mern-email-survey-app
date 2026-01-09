@@ -13,15 +13,14 @@ module.exports = (app) => {
   });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
-    const { surveyTitle, surveySubject, surveyBody, surveyRecipients } =
-      req.body;
+    const { title, subject, body, recipients } = req.body;
 
     // Create new Survey instance
     const survey = new Survey({
-      surveyTitle,
-      surveySubject,
-      surveyBody,
-      surveyRecipients: surveyRecipients.split(",").map((recipient) => {
+      title,
+      subject,
+      body,
+      recipients: recipients.split(",").map((recipient) => {
         return { email: recipient.trim() };
       }),
       _user: req.user.id,
