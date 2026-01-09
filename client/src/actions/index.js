@@ -24,5 +24,8 @@ export const submitSurvey = (formValues) => {
   return async (dispatch) => {
     // Send formValues object (i.e. a completed survey) to backend in post request
     const response = await axios.post("/api/surveys", formValues);
+
+    // Backend server sends updated user model
+    dispatch({ type: FETCH_USER, payload: response.data });
   };
 };
