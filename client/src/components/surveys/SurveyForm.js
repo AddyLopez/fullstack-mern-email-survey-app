@@ -43,7 +43,7 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.surveyRecipients = validateRecipients(values.surveyRecipients || ""); // validateEmails function returns recipients' invalid email addresses, if any
+  errors.recipients = validateRecipients(values.recipients || ""); // validateEmails function returns recipients' invalid email addresses, if any
 
   formFields.forEach(({ name, label }) => {
     if (!values[name]) {
