@@ -21,5 +21,8 @@ export const handleToken = (token) => {
 };
 
 export const submitSurvey = (formValues) => {
-  return { type: "submit_survey" };
+  return async (dispatch) => {
+    // Send formValues object (i.e. a completed survey) to backend in post request
+    const response = await axios.post("/api/surveys", formValues);
+  };
 };
