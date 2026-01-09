@@ -20,10 +20,12 @@ export const handleToken = (token) => {
   };
 };
 
-export const submitSurvey = (formValues) => {
+export const submitSurvey = (formValues, navigate) => {
   return async (dispatch) => {
     // Send formValues object (i.e. a completed survey) to backend in post request
     const response = await axios.post("/api/surveys", formValues);
+
+    navigate("/surveys"); // Redirect user using React Router. See how SurveyFormReview component relates.
 
     // Backend server sends updated user model
     dispatch({ type: FETCH_USER, payload: response.data });
