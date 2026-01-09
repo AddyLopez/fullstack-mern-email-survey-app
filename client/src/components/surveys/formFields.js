@@ -1,19 +1,19 @@
 const formFields = [
   {
     label: "Survey Title",
-    name: "surveyTitle",
+    name: "title",
   },
   {
     label: "Subject Line",
-    name: "surveySubject",
+    name: "subject",
   },
   {
     label: "Email Body",
-    name: "surveyBody",
+    name: "body",
   },
   {
     label: "Recipient List",
-    name: "surveyRecipients",
+    name: "recipients",
   },
 ];
 
