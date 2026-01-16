@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const { Path } = require("path-parser"); // To help extract survey ID and choice properties from path
 const { URL } = require("url"); // In-built Node module to help parse URLs.
 const mongoose = require("mongoose");
@@ -30,7 +31,10 @@ module.exports = (app) => {
       }
     });
 
-    console.log(events); // Verify list from map function is working as expected
+    const compactEvents = _.compact(events); // Remove undefined elements from events list using Lodash library
+    const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId"); // Look at email and surveyId properties and remove duplicates
+
+    res.send({});
   });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
