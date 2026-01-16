@@ -34,6 +34,7 @@ module.exports = (app) => {
     const compactEvents = _.compact(events); // Remove undefined elements from events list using Lodash library
     const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId"); // Look at email and surveyId properties and remove duplicates
 
+    console.log(uniqueEvents);
     res.send({});
   });
 
