@@ -28,6 +28,8 @@ module.exports = (app) => {
         };
       }
     });
+
+    console.log(events); // Verify list from map function is working as expected
   });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
