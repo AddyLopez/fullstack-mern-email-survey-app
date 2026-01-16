@@ -1,4 +1,4 @@
-const Path = require("path-parser").default; // To help extract survey ID and choice properties from path
+const { Path } = require("path-parser"); // To help extract survey ID and choice properties from path
 const { URL } = require("url"); // In-built Node module to help parse URLs.
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
