@@ -15,8 +15,12 @@ module.exports = (app) => {
   });
 
   app.post("/api/surveys/webhooks", (req, res) => {
-    console.log(req.body);
-    res.send({});
+    const { body } = req;
+    const events = body.map((event) => {
+      const pathName = new URL(event.url).pathname; // Extract the path from the URL
+      const pathToParse = new Path("/api/surveys/:surveyId/:choice"); // Uses path-parser library. Goal is to extract survey ID and choice from URL.
+      console.log(pathToParse.test(pathname));
+    });
   });
 
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
