@@ -18,10 +18,14 @@ module.exports = (app) => {
     const { body } = req;
     const events = body.map((event) => {
       const pathName = new URL(event.url).pathname; // Extract the path from the URL
-      const pathToParse = new Path("/api/surveys/:surveyId/:choice"); // Uses path-parser library. Goal is to extract survey ID and choice from URL.
+      const pathToParse = new Path("/api/surveys/:surveyId/:choice"); // Uses path-parser library. Goal is to extract surveyId and choice from URL.
       const match = pathToParse.test(pathName); // Will return either an object (with surveyId and choice properties) or null
       if (match) {
-        return match;
+        return {
+          email: event.email,
+          surveyId: match.surveyId,
+          choice: match.choice,
+        };
       }
     });
   });
