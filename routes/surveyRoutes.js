@@ -1,3 +1,5 @@
+const Path = require("path-parser").default; // To help extract survey ID and choice properties from path
+const { URL } = require("url"); // In-built Node module to help parse URLs.
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 const requireCredits = require("../middlewares/requireCredits");
@@ -31,6 +33,8 @@ module.exports = (app) => {
       _user: req.user.id,
       dateSent: Date.now(),
     });
+
+    console.log(survey);
 
     // Create and send email, then save survey
     const mailer = new Mailer(survey, surveyTemplate(survey)); // 1st arg passes survey object to extract subject and recipients properties. 2nd arg is HTML content to use in body of email.
