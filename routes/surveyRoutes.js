@@ -33,8 +33,10 @@ module.exports = (app) => {
     });
 
     const events = _.chain(unfilteredEvents)
-      .compact() // Remove undefined elements from events list using Lodash library
-      .uniqBy("email", "surveyId") // Look at email and surveyId properties and remove duplicates
+      .compact() // Remove undefined elements from unfilteredEvents list using Lodash library
+      .uniqBy((compactedEvent) =>
+        [compactedEvent.email, compactedEvent.surveyId].join()
+      ) // Join email and surveyId properties, then remove duplicates (i.e. only return unique elements). (The email and surveyId properties one-to-many and many-to-one relationships.)
       .value(); // Pull out the array
 
     console.log(events);
