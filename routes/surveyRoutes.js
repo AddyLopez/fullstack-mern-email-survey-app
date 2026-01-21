@@ -17,9 +17,10 @@ module.exports = (app) => {
 
   app.post("/api/surveys/webhooks", (req, res) => {
     const { body } = req;
-    const events = body.map((event) => {
+    const pathToParse = new Path("/api/surveys/:surveyId/:choice"); // Uses path-parser library. Goal is to extract surveyId and choice from URL.
+
+    const unfilteredEvents = body.map((event) => {
       const pathName = new URL(event.url).pathname; // Extract the path from the URL
-      const pathToParse = new Path("/api/surveys/:surveyId/:choice"); // Uses path-parser library. Goal is to extract surveyId and choice from URL.
       const match = pathToParse.test(pathName); // Will return either an object (with surveyId and choice properties) or null
       // Discard records without surveyId and choice properties
       if (match) {
@@ -31,10 +32,13 @@ module.exports = (app) => {
       }
     });
 
-    const compactEvents = _.compact(events); // Remove undefined elements from events list using Lodash library
-    const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId"); // Look at email and surveyId properties and remove duplicates
+    const events = _.chain(unfilteredEvents)
+      .compact() // Remove undefined elements from events list using Lodash library
+      .uniqBy("email", "surveyId") // Look at email and surveyId properties and remove duplicates
+      .value(); // Pull out the array
 
-    console.log(uniqueEvents);
+    console.log(events);
+
     res.send({});
   });
 
