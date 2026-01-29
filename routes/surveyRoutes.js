@@ -35,6 +35,25 @@ module.exports = (app) => {
     const events = _.chain(unfilteredEvents)
       .compact() // Remove undefined elements from unfilteredEvents list using Lodash library
       .uniqWith((a, b) => a.email === b.email && a.surveyId === b.surveyId) // Feed comparator function (of two elements in array) into uniqWith method to remove duplicates (i.e. only return unique elements). (The email and surveyId properties have one-to-many and many-to-one relationships.)
+      .each((event) => {
+        // Mongoose query
+        //email = 'a@a.com'
+        //choice = 'yes' || 'no';
+
+        // This update is executed entirely within Mongo database. Advantage: No need to freight data back and forth between Express and Mongo.
+        Survey.updateOne(
+          {
+            _id: surveyId,
+            recipients: {
+              $elemMatch: { email: email, responded: false },
+            },
+          },
+          {
+            $inc: { [choice]: 1 }, // Mongo operator. Find 'choice' property (i.e. 'yes' or 'no') and increment its value by one (i.e. one vote). ES16 key interpolation used (e.g. [choice]).
+            $set: { "recipients.$.responded": true }, // Mongo operator. Set recipients 'responded' property to 'true'. The $ corresponds to element matched in subdocument collection using $elemMatch in query
+          }
+        ).exec(); // Execute the query
+      })
       .value(); // Pull out the array
 
     console.log(events);
