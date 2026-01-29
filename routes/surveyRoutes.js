@@ -63,7 +63,7 @@ module.exports = (app) => {
       subject,
       body,
       recipients: recipients.split(",").map((recipient) => {
-        return { email: recipient.toLowerCase().trim() };
+        return { email: recipient.toLowerCase().trim(), responded: false };
       }),
       _user: req.user.id,
       dateSent: Date.now(),
