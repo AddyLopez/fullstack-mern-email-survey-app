@@ -46,6 +46,7 @@ module.exports = (app) => {
           {
             $inc: { [choice]: 1 }, // Mongo operator. Find 'choice' property (i.e. 'yes' or 'no') and increment its value by one (i.e. one vote). ES16 key interpolation used (e.g. [choice]).
             $set: { "recipients.$.responded": true }, // Mongo operator. Set recipients 'responded' property to 'true'. The $ corresponds to element matched in subdocument collection using $elemMatch in query
+            lastResponded: new Date(),
           }
         ).exec(); // Execute the query
       })
