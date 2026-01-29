@@ -34,7 +34,7 @@ module.exports = (app) => {
       })
       .compact() // Remove undefined elements from unfilteredEvents list using Lodash library
       .uniqWith((a, b) => a.email === b.email && a.surveyId === b.surveyId) // Feed comparator function (of two elements in array) into uniqWith method to remove duplicates (i.e. only return unique elements). (The email and surveyId properties have one-to-many and many-to-one relationships.)
-      .each((event) => {
+      .each(({ surveyId, email, choice }) => {
         // This Mongoose query and update is executed entirely within Mongo database. Advantage: No need to freight data back and forth between Express and Mongo.
         Survey.updateOne(
           {
