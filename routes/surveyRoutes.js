@@ -19,20 +19,19 @@ module.exports = (app) => {
     const { body } = req;
     const pathToParse = new Path("/api/surveys/:surveyId/:choice"); // Uses path-parser library. Goal is to extract surveyId and choice from URL.
 
-    const unfilteredEvents = body.map((event) => {
-      const pathName = new URL(event.url).pathname; // Extract the path from the URL
-      const match = pathToParse.test(pathName); // Will return either an object (with surveyId and choice properties) or null
-      // Discard records without surveyId and choice properties
-      if (match) {
-        return {
-          email: event.email,
-          surveyId: match.surveyId,
-          choice: match.choice,
-        };
-      }
-    });
-
-    const events = _.chain(unfilteredEvents)
+    _.chain(body)
+      .map((event) => {
+        const pathName = new URL(event.url).pathname; // Extract the path from the URL
+        const match = pathToParse.test(pathName); // Will return either an object (with surveyId and choice properties) or null
+        // Discard records without surveyId and choice properties
+        if (match) {
+          return {
+            email: event.email,
+            surveyId: match.surveyId,
+            choice: match.choice,
+          };
+        }
+      })
       .compact() // Remove undefined elements from unfilteredEvents list using Lodash library
       .uniqWith((a, b) => a.email === b.email && a.surveyId === b.surveyId) // Feed comparator function (of two elements in array) into uniqWith method to remove duplicates (i.e. only return unique elements). (The email and surveyId properties have one-to-many and many-to-one relationships.)
       .each((event) => {
