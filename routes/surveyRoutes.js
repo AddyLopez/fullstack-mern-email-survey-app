@@ -10,7 +10,7 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = mongoose.model("Survey");
 
 module.exports = (app) => {
-  app.get("/api/surveys/thanks", (req, res) => {
+  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
     const reply = `<main style="background-color: #d3eff8ff; border-radius: 10px; font-family: Monaco, sans-serif; padding: 20px 10px 40px 10px; text-align: center;"><h1>Thanks for sharing your feedback!</h1></main>`;
     res.send(reply);
   });
