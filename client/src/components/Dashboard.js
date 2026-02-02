@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import SurveyList from "./surveys/SurveyList";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {
   return (
     <section className="Dashboard">
-      <h4>I am the Dashboard component!</h4>
+      <SurveyList />
       <Outlet />
       <div className="button-container">
         <Link to="/surveys/new" className="button-plus">
