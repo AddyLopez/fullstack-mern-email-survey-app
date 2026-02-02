@@ -8,8 +8,21 @@ class SurveyList extends Component {
     this.props.fetchSurveys();
   }
 
+  renderSurveys() {
+    return this.props.surveys.map((survey) => {
+      return (
+        <div key={survey._id}>
+          <h4>{survey.title}</h4>
+          <p>Sent On: {new Date(survey.dateSent).toLocaleDateString()}</p>
+          <p>Yes: {survey.yes}</p>
+          <p>No: {survey.no}</p>
+        </div>
+      );
+    });
+  }
+
   render() {
-    return <h4>I am the SurveyList component!</h4>;
+    return <div className="SurveyList">{this.renderSurveys()}</div>;
   }
 }
 
