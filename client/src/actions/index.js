@@ -36,6 +36,6 @@ export const fetchSurveys = () => {
   return async (dispatch) => {
     // Make request to backend API and dispatch action
     const response = await axios.get("/api/surveys");
-    dispatch({ type: FETCH_SURVEYS, payload: response.data });
+    dispatch({ type: FETCH_SURVEYS, payload: response.data }); // The payload's value is an array of surveys the user has made
   };
 };
