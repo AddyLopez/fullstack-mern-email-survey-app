@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER } from "./types";
+import { FETCH_USER, FETCH_SURVEYS } from "./types";
 
 // Redux action creator. It uses redux thunk. It dispatches the action after API responds.
 export const fetchUser = () => {
@@ -29,5 +29,13 @@ export const submitSurvey = (formValues, navigate) => {
 
     // Backend server sends updated user model
     dispatch({ type: FETCH_USER, payload: response.data });
+  };
+};
+
+export const fetchSurveys = () => {
+  return async (dispatch) => {
+    // Make request to backend API and dispatch action
+    const response = await axios.get("/api/surveys");
+    dispatch({ type: FETCH_SURVEYS, payload: response.data });
   };
 };
