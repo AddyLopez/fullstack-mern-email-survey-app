@@ -32,8 +32,12 @@ passport.use(
         // We already have a record with given profile's ID, skip user creation
         return done(null, existingUser); // First argument: no error; second argument: send along existingUser
       }
+
       // Otherwise, create new Model Instance of a User (one discrete record) and save it (otherwise it won't persist in the database), then take new user successfully saved in db and call done function.
-      const user = await new User({ googleId: profile.id }).save();
+      const user = await new User({
+        googleId: profile.id,
+        displayName: profile.displayName,
+      }).save();
 
       done(null, user);
     }
