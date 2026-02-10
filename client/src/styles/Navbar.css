@@ -1,0 +1,56 @@
+.Navbar {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 18px;
+  flex-wrap: wrap;
+}
+
+.Navbar ul {
+  align-items: center;
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar li {
+  padding: 0 10px;
+}
+
+.Navbar a {
+  color: black;
+  text-decoration: none;
+}
+
+.Navbar button {
+  border-style: 1px solid hsl(180, 100%, 15%);
+  background-color: teal;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 6px 8px;
+}
+
+.Navbar a.logo {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 24px;
+}
+
+.Navbar ul a:hover {
+  color: teal;
+}
+
+@media only screen and (max-width: 576px) {
+  .Navbar ul {
+    border-top: 1px solid black;
+    padding-top: 10px;
+    width: 100%;
+  }
+}
