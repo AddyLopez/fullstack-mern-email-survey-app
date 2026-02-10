@@ -2,6 +2,7 @@ import { React, Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import Payments from "./Payments";
+import "../styles/Navbar.css";
 
 class NavBar extends Component {
   renderContent() {
@@ -15,27 +16,38 @@ class NavBar extends Component {
           </li>
         );
       default:
-        // placeholder for now
-        return [
-          <li key="1">
-            <Payments />
-          </li>,
-          <li key="2"> Credits: {this.props.authentication.credits}</li>,
-          <li key="3">
-            <a href="/api/logout">Log out</a>
-          </li>,
-        ];
+        return (
+          <>
+            <div className="welcome">
+              <p>Welcome, {this.props.authentication.displayName}!</p>
+            </div>
+            <ul>
+              <li key="1">
+                <Payments />
+              </li>
+              <li key="2"> Credits: {this.props.authentication.credits}</li>
+              <li key="3">
+                <a href="/api/logout">Log out</a>
+              </li>
+            </ul>
+          </>
+        );
     }
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
-      <nav>
-        <NavLink to={this.props.authentication ? "/surveys" : "/"}>
-          Inquire
-        </NavLink>
-        <ul>{this.renderContent()}</ul>
+      <nav className="Navbar">
+        <div>
+          <NavLink
+            className="logo"
+            to={this.props.authentication ? "/surveys" : "/"}
+          >
+            Inquire
+          </NavLink>
+        </div>
+        {this.renderContent()}
       </nav>
     );
   }
