@@ -1,5 +1,5 @@
 import { React, Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Payments from "./Payments";
 import "../styles/Navbar.css";
@@ -19,15 +19,24 @@ class NavBar extends Component {
         return (
           <>
             <div className="welcome">
-              <p>Welcome, {this.props.authentication.displayName}!</p>
+              <p>
+                Welcome, {this.props.authentication.displayName}! You have{" "}
+                {this.props.authentication.credits} credits.
+              </p>
             </div>
             <ul>
-              <li key="1">
+              <li>
                 <Payments />
               </li>
-              <li key="2"> Credits: {this.props.authentication.credits}</li>
-              <li key="3">
-                <a href="/api/logout">Log out</a>
+              <li>
+                <button>
+                  <Link to="/surveys/new">Create Survey</Link>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <a href="/api/logout">Log Out</a>
+                </button>
               </li>
             </ul>
           </>
