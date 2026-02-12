@@ -18,12 +18,12 @@ class NavBar extends Component {
       default:
         return (
           <>
-            <div className="welcome">
-              <p>
-                Welcome, {this.props.authentication.displayName}! You have{" "}
-                {this.props.authentication.credits} credits.
-              </p>
-            </div>
+            <p className="welcome">
+              Welcome, {this.props.authentication.displayName}!
+            </p>
+            <p className="welcome">
+              Credits: {this.props.authentication.credits}
+            </p>
             <ul>
               <li>
                 <Payments />
