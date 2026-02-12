@@ -1,24 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap");
+
 body {
+  background-color: hsl(180, 18%, 92%);
+  font-family: "Scheherazade New", serif;
   margin: 0;
 }
 
 .Navbar {
-  background-color: hsl(180, 12%, 89%);
-  color: hsl(180, 18%, 37%);
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: hsl(180, 18%, 37%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
   font-size: 18px;
   flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.Navbar p {
+  font-size: 20px;
 }
 
 .Navbar ul {
   align-items: center;
   display: flex;
-  list-style: none;
   justify-content: space-between;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -28,21 +35,22 @@ body {
 }
 
 .Navbar a {
+  color: hsl(0, 0%, 100%);
   font-weight: 600;
-  color: hsl(180, 18%, 37%);
   text-decoration: none;
 }
 
 .Navbar button {
-  border: 1px solid hsl(180, 18%, 37%);
-  background-color: hsl(180, 18%, 47%);
+  border: 1px solid hsl(315, 19%, 22%);
+  background-color: hsl(315, 19%, 37%);
   border-radius: 6px;
-  color: white;
+  color: hsl(0, 0%, 100%);
   cursor: pointer;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 15px;
   font-weight: 600;
-  padding: 6px 8px;
+  letter-spacing: 1px;
+  padding: 6px 10px;
 }
 
 .Navbar button a {
@@ -51,8 +59,7 @@ body {
 }
 
 .Navbar a.logo {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .Navbar .welcome {
@@ -66,7 +73,7 @@ body {
 @media only screen and (max-width: 820px) {
   .Navbar ul {
     border-top: 1px solid white;
-    padding-top: 10px;
+    padding: 15px 0 5px 0;
     width: 100%;
   }
 }
