@@ -5,7 +5,8 @@ import "../../styles/SurveyField.css";
 const SurveyField = ({ input, label, meta: { error, touched } }) => {
   return (
     <div className="SurveyField">
-      <label>{label}</label>
+      <label>{label.toUpperCase()} </label>
+      <br />
       <input {...input} />
       <div className="error">{touched && error}</div>
     </div>
