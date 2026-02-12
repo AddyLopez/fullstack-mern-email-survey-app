@@ -1,0 +1,49 @@
+.SurveyForm {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 6px;
+  color: hsl(180, 18%, 37%);
+  border: 1px solid hsl(180, 18%, 37%);
+  margin: 20px auto 60px auto;
+  padding: 20px 16px 40px 16px;
+  width: 50%;
+}
+
+.SurveyForm h3,
+.SurveyForm h4 {
+  text-align: center;
+}
+
+.SurveyForm h3 {
+  font-size: 22px;
+  margin: 0;
+}
+.SurveyForm h4 {
+  font-size: 17px;
+  margin: 14px 0;
+}
+
+.SurveyForm .form-div {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.SurveyForm a,
+.SurveyForm button {
+  border: 1px solid hsl(315, 19%, 22%);
+  background-color: hsl(315, 19%, 37%);
+  border-radius: 6px;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  text-decoration: none;
+}
+
+.SurveyForm .form-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 40px;
+}
