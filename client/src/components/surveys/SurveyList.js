@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSurveys } from "../../actions/index";
+import "../../styles/SurveyList.css";
 
 class SurveyList extends Component {
   // lifecycle method to call fetchSurveys action creator whenever component is rendered
@@ -11,11 +12,32 @@ class SurveyList extends Component {
   renderSurveys() {
     return this.props.surveys.reverse().map((survey) => {
       return (
-        <div key={survey._id}>
-          <h4>{survey.title}</h4>
-          <p>Sent On: {new Date(survey.dateSent).toLocaleDateString()}</p>
-          <p>Yes: {survey.yes}</p>
-          <p>No: {survey.no}</p>
+        <div key={survey._id} className="survey">
+          <section>
+            <h4>SURVEY TITLE</h4>
+            <p>{survey.title}</p>
+          </section>
+          <section>
+            <h4>SENT ON</h4>
+            <p>{new Date(survey.dateSent).toLocaleDateString()}</p>
+          </section>
+          <section className="border">
+            <h4>EMAIL BODY</h4>
+            <p>{survey.body}</p>
+          </section>
+          <section className="border">
+            <h4>RESPONSES TO DATE</h4>
+            <div className="responses">
+              <p>
+                <span>Yes: </span>
+                {survey.yes}
+              </p>
+              <p>
+                <span>No: </span>
+                {survey.no}
+              </p>
+            </div>
+          </section>
         </div>
       );
     });
