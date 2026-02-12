@@ -30,12 +30,12 @@ class NavBar extends Component {
               </li>
               <li>
                 <button>
-                  <Link to="/surveys/new">Create Survey</Link>
+                  <Link to="/surveys/new">CREATE SURVEY</Link>
                 </button>
               </li>
               <li>
                 <button>
-                  <a href="/api/logout">Log Out</a>
+                  <a href="/api/logout">LOG OUT</a>
                 </button>
               </li>
             </ul>
