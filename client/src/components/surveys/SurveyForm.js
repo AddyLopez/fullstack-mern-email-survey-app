@@ -57,7 +57,7 @@ function validate(values) {
   formFields.forEach(({ name, label }) => {
     if (!values[name]) {
       if (label === "Email Body") {
-        errors[name] = `You must provide an ${label.toLowerCase()}`;
+        errors[name] = `You must provide an ${label.toLowerCase()}.`;
         return;
       }
       errors[name] = `You must provide a ${label.toLowerCase()}.`;
