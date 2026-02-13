@@ -1,4 +1,4 @@
-.SurveyForm {
+.SurveyFormReview {
   background-color: hsl(0, 0%, 100%);
   border: 1px dashed hsl(180, 18%, 37%);
   border-radius: 6px;
@@ -9,30 +9,47 @@
   width: 60%;
 }
 
-.SurveyForm h3 {
-  font-size: 22px;
-  margin: 0;
+.SurveyFormReview h3,
+.SurveyFormReview h4 {
   text-align: center;
 }
 
-.SurveyForm h4 {
+.SurveyFormReview h3 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.SurveyFormReview h4 {
   font-size: 17px;
   margin: 0 auto 14px auto;
   text-align: left;
   width: 75%;
 }
 
-.SurveyForm .form-div {
+.SurveyFormReview p {
+  font-size: 17px;
+  margin: 0;
+}
+
+.SurveyFormReview label {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.SurveyFormReview .reviewfields-div {
   border-top: 1px dashed hsl(180, 18%, 37%);
   padding-top: 10px;
   margin: 0 auto;
   width: 80%;
 }
 
-.SurveyForm a,
-.SurveyForm button {
-  background-color: hsl(315, 19%, 37%);
+.SurveyFormReview .reviewfields-div section {
+  margin-bottom: 10px;
+}
+
+.SurveyFormReview button {
   border: 1px solid hsl(315, 19%, 22%);
+  background-color: hsl(315, 19%, 37%);
   border-radius: 6px;
   color: hsl(0, 0%, 100%);
   cursor: pointer;
@@ -44,20 +61,22 @@
   text-decoration: none;
 }
 
-.SurveyForm .form-buttons {
+.SurveyFormReview .formreview-buttons {
   display: flex;
   justify-content: space-evenly;
   padding-top: 20px;
 }
 
 @media only screen and (max-width: 820px) {
-  .SurveyForm {
+  .SurveyFormReview {
     width: 88%;
   }
-  .SurveyForm h4 {
+
+  .SurveyFormReview h4 {
     width: 90%;
   }
-  .SurveyForm .form-div {
-    width: 90%;
+
+  .SurveyFormReview .reviewfields-div {
+    width: 95%;
   }
 }
