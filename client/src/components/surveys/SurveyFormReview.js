@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import formFields from "./formFields";
 import { useNavigate } from "react-router-dom";
 import * as actions from "../../actions/index"; // import all action creators
+import "../../styles/SurveyFormReview.css";
 
 // SurveyFormReview shows users their form inputs for review
 const SurveyFormReview = ({ toggle, formValues, submitSurvey }) => {
@@ -11,22 +12,26 @@ const SurveyFormReview = ({ toggle, formValues, submitSurvey }) => {
   const reviewFormFields = formFields.map((formField) => {
     return (
       <section key={formField.name}>
-        <div>
-          <label>{formField.label}</label>
-          <p>{formValues[formField.name]}</p>
-        </div>
+        <label>{formField.label.toUpperCase()}</label>
+        <p>{formValues[formField.name]}</p>
       </section>
     );
   });
 
   return (
-    <section>
-      <h4>Please confirm that all the information is correct.</h4>
-      {reviewFormFields}
-      <button onClick={toggle}>Back</button>
-      <button onClick={() => submitSurvey(formValues, navigate)}>
-        Send Survey
-      </button>
+    <section className="SurveyFormReview">
+      <h3>REVIEW & CONFIRM ENTRIES</h3>
+      <h4>
+        Please confirm that all the information is correct. Select "go back" to
+        edit. Once certain, send the survey.
+      </h4>
+      <div className="reviewfields-div">{reviewFormFields}</div>
+      <div className="formreview-buttons">
+        <button onClick={toggle}>GO BACK</button>
+        <button onClick={() => submitSurvey(formValues, navigate)}>
+          SEND SURVEY
+        </button>
+      </div>
     </section>
   );
 };
