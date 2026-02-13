@@ -32,8 +32,9 @@ class SurveyForm extends Component {
       <div className="SurveyForm">
         <h3>NEW SURVEY</h3>
         <h4>
-          Fill in the form to create a survey. Select "Next" to review your
-          answers.
+          Fill in the form to create a simple survey asking a yes-or-no
+          question. List recipients' emails separated by a comma and a space.
+          Select "Next" to review your answers.
         </h4>
         <div className="form-div">
           <form onSubmit={this.props.handleSubmit(this.props.toggle)}>
