@@ -1,5 +1,5 @@
 .SurveyList {
-  color: hsl(180, 18%, 32%);
+  color: hsl(0, 0%, 0%);
   padding: 20px 16px 40px 16px;
 }
 
@@ -17,6 +17,7 @@
   background-color: hsl(0, 0%, 100%);
   border: 1px dashed hsl(180, 18%, 37%);
   border-radius: 4px;
+  box-shadow: 1px 1px 5px hsl(0 0% 40% / 1);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 10px 0;
