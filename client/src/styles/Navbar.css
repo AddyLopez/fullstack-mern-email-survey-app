@@ -77,3 +77,12 @@ body {
     width: 100%;
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .Navbar button {
+    font-size: 11px;
+  }
+  .Navbar .welcome {
+    font-size: 17px;
+  }
+}
