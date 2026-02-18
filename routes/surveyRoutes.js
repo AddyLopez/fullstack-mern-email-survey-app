@@ -30,15 +30,21 @@ module.exports = (app) => {
 
     _.chain(body)
       .map((event) => {
-        const pathName = new URL(event.url).pathname; // Extract the path from the URL
-        const match = pathToParse.test(pathName); // Will return either an object (with surveyId and choice properties) or null
-        // Discard records without surveyId and choice properties
-        if (match) {
-          return {
-            email: event.email,
-            surveyId: match.surveyId,
-            choice: match.choice,
-          };
+        console.log("Event: ", event);
+        const url = event.url;
+
+        if (url) {
+          const pathName = new URL(event.url).pathname; // Extract the path from the URL
+          const match = pathToParse.test(pathName); // Will return either an object (with surveyId and choice properties) or null
+
+          // Discard records without surveyId and choice properties
+          if (match) {
+            return {
+              email: event.recipient, // Not certain if this is going to work
+              surveyId: match.surveyId,
+              choice: match.choice,
+            };
+          }
         }
       })
       .compact() // Remove undefined elements from unfilteredEvents list using Lodash library
