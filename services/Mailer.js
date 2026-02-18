@@ -12,11 +12,15 @@ class Mailer {
 
     this.data = {
       from: "shandelaide@gmail.com",
-      to: recipients,
+      to: this.formatAddresses(recipients),
       subject: subject,
       html: content,
       "o:tracking-clicks": true,
     };
+  }
+
+  formatAddresses(recipients) {
+    return recipients.map(({ email }) => email);
   }
 
   async send() {
