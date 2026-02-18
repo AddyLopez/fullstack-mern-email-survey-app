@@ -1,19 +1,21 @@
 const Mailgun = require("mailgun-js");
-//const mailgun = new Mailgun(FormData);
+const formData = require("form-date");
+const mailgun = new Mailgun(formData);
 // const sendGrid = require("sendgrid");
 // const helper = sendGrid.mail; // Mail class from SendGrid library
 const keys = require("../config/keys");
 
 class Mailer /*extends helper.Mail*/ {
   constructor({ subject, recipients }, content) {
-    this.mailgun = mailgun({
-      apiKey: keys.mailgunKey,
-      domain: keys.mailgunDomain,
+    this.mailgun = mailgun.client({
+      username: "api",
+      key: keys.mailgunKey,
+      url: keys.mailgunDomain,
     });
 
     this.data = {
       from: "shandelaide@gmail.com",
-      to: this.formatAddresses(recipients),
+      to: recipients,
       subject: subject,
       html: content,
       "o:tracking-clicks": true,
@@ -32,13 +34,15 @@ class Mailer /*extends helper.Mail*/ {
     */
   }
 
+  /*
   formatAddresses(recipients) {
     return recipients
       .map(({ email }) => {
-        return email; /* new helper.Email(email); // Format each recipient's email with SendGrid's helper function */
+        return email; 
       })
       .join(",");
   }
+  */
 
   /*
   addClickTracking() {
@@ -62,15 +66,10 @@ class Mailer /*extends helper.Mail*/ {
   */
 
   async send() {
-    return new Promise((resolve, reject) => {
-      this.mailgun.messages().send(this.data, (error, body) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(body);
-        }
-      });
-    });
+    return await this.mailgun.messages
+      .create(keys.mailgunDomain, this.data)
+      .then((message) => console.log(message))
+      .catch((error) => console.log(error));
     /*
     try {
       // toJSON and API methods are defined by base class
