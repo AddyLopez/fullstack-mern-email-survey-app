@@ -1,9 +1,8 @@
 const Mailgun = require("mailgun.js");
-const formData = require("form-data");
-const mailgun = new Mailgun(formData);
+const mailgun = new Mailgun(FormData);
 const keys = require("../config/keys");
 
-class Mailer /*extends helper.Mail*/ {
+class Mailer {
   constructor({ subject, recipients }, content) {
     this.mailgun = mailgun.client({
       username: "api",
