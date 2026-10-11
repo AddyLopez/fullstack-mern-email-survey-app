@@ -7,7 +7,7 @@ class Mailer {
     this.mailgun = mailgun.client({
       username: "api",
       key: keys.mailgunKey,
-      url: keys.mailgunDomain,
+      url: `https://api.mailgun.net/v3/${keys.mailgunDomain}/messages`,
     });
 
     this.data = {
