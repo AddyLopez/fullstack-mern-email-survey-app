@@ -12,7 +12,7 @@ class Mailer {
 
     this.data = {
       from: "shandelaide@gmail.com",
-      to: this.formatAddresses(recipients),
+      to: [this.formatAddresses(recipients)],
       subject: subject,
       html: content,
       "o:tracking-clicks": true,
@@ -20,10 +20,13 @@ class Mailer {
   }
 
   formatAddresses(recipients) {
-    return recipients.map(({ email }) => email);
+    return recipients.map(({ email }) => email).join();
   }
 
   async send() {
+    console.log("This.mailgun: ", this.mailgun);
+    console.log("This.data ", this.data);
+
     return await this.mailgun.messages
       .create(keys.mailgunDomain, this.data)
       .then((message) => console.log(message))
