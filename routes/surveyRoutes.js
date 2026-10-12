@@ -31,16 +31,17 @@ module.exports = (app) => {
     _.chain(body)
       .map((event) => {
         console.log("Event: ", event);
+        const email = item.recipient;
         const url = event.url;
 
         if (url) {
-          const pathName = new URL(event.url).pathname; // Extract the path from the URL
+          const pathName = new URL(url).pathname; // Extract the path from the URL
           const match = pathToParse.test(pathName); // Will return either an object (with surveyId and choice properties) or null
 
           // Discard records without surveyId and choice properties
           if (match) {
             return {
-              email: event.recipient, // Not certain if this is going to work
+              email,
               surveyId: match.surveyId,
               choice: match.choice,
             };
@@ -62,7 +63,7 @@ module.exports = (app) => {
             $inc: { [choice]: 1 }, // Mongo operator. Find 'choice' property (i.e. 'yes' or 'no') and increment its value by one (i.e. one vote). ES16 key interpolation used (e.g. [choice]).
             $set: { "recipients.$.responded": true }, // Mongo operator. Set recipients 'responded' property to 'true'. The $ corresponds to element matched in subdocument collection using $elemMatch in query
             lastResponded: new Date(),
-          }
+          },
         ).exec(); // Execute the query
       })
       .value(); // Pull out the array
