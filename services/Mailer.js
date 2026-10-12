@@ -1,4 +1,4 @@
-const mailgun = requier("mailgun-js");
+const mailgun = require("mailgun-js");
 const keys = require("../config/keys");
 
 class Mailer {
