@@ -1,13 +1,11 @@
-const Mailgun = require("mailgun.js");
-const mailgun = new Mailgun(FormData);
+const mailgun = requier("mailgun-js");
 const keys = require("../config/keys");
 
 class Mailer {
   constructor({ subject, recipients }, content) {
-    this.mailgun = mailgun.client({
-      username: "api",
+    this.mailgun = mailgun({
       key: keys.mailgunKey,
-      url: `https://api.mailgun.net/v3/${keys.mailgunDomain}/messages`,
+      domain: keys.mailgunDomain,
     });
 
     this.data = {
@@ -20,17 +18,22 @@ class Mailer {
   }
 
   formatAddresses(recipients) {
-    return recipients.map(({ email }) => email).join();
+    return recipients.map(({ email }) => email).join(",");
   }
 
   async send() {
-    console.log("This.mailgun: ", this.mailgun);
-    console.log("This.data ", this.data);
+    return new Promise((resolve, reject) => {
+      this.mailgun.messages().send(this.data, (error, body) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(body);
+        }
+      });
+    });
 
-    return await this.mailgun.messages
-      .create(keys.mailgunDomain, this.data)
-      .then((message) => console.log(message))
-      .catch((error) => console.log(error));
+    //console.log("This.mailgun: ", this.mailgun);
+    //console.log("This.data ", this.data);
   }
 }
 
