@@ -7,6 +7,7 @@ require("./models/User");
 require("./models/Survey");
 require("./services/passport");
 
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI); // Use Mongoose to connect with MongoDB instance
 
 const PORT = process.env.PORT || 5001;
@@ -19,7 +20,7 @@ app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey],
-  })
+  }),
 );
 
 // Tell app to make use of cookies for authentication
@@ -32,15 +33,19 @@ require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up specific static production assets (e.g. main.js or main.css)
-  app.use(express.static("client/build"));
+  app.use(express.static("client/dist"));
 
   // Catch-all/Fallback: Express will serve up index.html if it doesn't recognize the route.
   const path = require("path");
   app.get("/*path", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
   });
 }
 
 app.listen(PORT, () => {
   console.log(`Listening on Port ${PORT}`);
 });
+
+// or:
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT)
