@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSurveys } from "../../actions/index";
+import { fetchSurveys } from "../../store/slices/surveysSlice";
 import "../../styles/SurveyList.css";
 
 const SurveyList = () => {
