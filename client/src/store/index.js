@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authenticationReducer from "./slices/authenticationSlice";
-import surveysReducer from "./surveysSlice";
+import surveysReducer from "./slices/surveysSlice";
 
 // keys inside state object
 export const store = configureStore({
